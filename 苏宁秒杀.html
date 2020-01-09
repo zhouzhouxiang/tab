@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="./苏宁秒杀.css">
+</head>
+<body>
+    <div class="nav">
+        <div class="top"> 
+            <h2>限时抢购</h2>
+            <span>距离下场</span>
+            <div class="time">
+                <strong id="hour"></strong>
+                <strong id="minute"></strong>
+                <strong id="second"></strong>
+            </div>
+            <div class="right">
+            <ul>
+                <li class="li1 active1"> 13:00场-正在疯抢</li>
+                <li class="li2"> 16:00场-即将开抢</li>
+            </ul>
+            </div>
+
+            <div class="container active2">
+                <img src="./images/1.png" >
+                <img src="./images/2.png" >
+                <img src="./images/3.png" >
+                <img src="./images/4.png" >
+            </div>
+
+            <div class="container">
+                <img src="./images/5.png" >
+                <img src="./images/6.png" >
+                <img src="./images/7.png" >
+                <img src="./images/8.png" >
+            </div>
+        </div>
+            
+    </div>
+    <script src="./lib/jquery-3.4.1.js"></script>
+    <script>
+           $("li").mousemove(function(){
+               $(".container").eq($(this).index()).addClass("active2").siblings().removeClass("active2")
+               $("li").eq($(this).index()).addClass("active1").siblings().removeClass("active1")
+           })
+           var endTime= +new Date('2019-12-02 10:00:00')
+	       var hour=document.getElementById('hour')
+	       var minute=document.getElementById('minute')
+	       var second=document.getElementById('second')
+	       fn()
+	       var timeId=setInterval(fn,1000)
+	       function fn(){
+		     var startTime= +new Date()
+		     var time=(endTime-startTime)/1000
+		     var h=Math.floor(time/3600)
+		     var m=Math.floor((time-h*3600)/60)
+		     var s=Math.floor(time%60)
+		     hour.innerHTML=h
+		     minute.innerHTML=m
+		     second.innerHTML=s
+    }
+    </script>
+</body>
+</html>
